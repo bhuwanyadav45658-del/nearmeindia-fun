@@ -1,0 +1,16 @@
+{
+  "name": "NearMe India",
+  "short_name": "NearMe India",
+  "description": "Public utility directory for India",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f6efe0",
+  "theme_color": "#101820",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

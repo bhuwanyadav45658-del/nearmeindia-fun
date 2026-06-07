@@ -12,7 +12,15 @@ const routes = [
   'police-stations/hyderabad',
   'fire-stations/hyderabad',
   'public-toilets/hyderabad',
-  'air-quality/hyderabad'
+  'air-quality/hyderabad',
+  'about',
+  'contact',
+  'faq',
+  'privacy',
+  'terms',
+  'blog',
+  'emergency-guide',
+  'contribute'
 ];
 
 const source = join(dist, 'index.html');

@@ -1,5 +1,6 @@
 import { Heart, GitBranch, MapPin, FileText, Send, CheckCircle, Users, Globe } from 'lucide-react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { updatePageMetadata } from '../utils/seo';
 
 const contributionWays = [
   {
@@ -37,6 +38,15 @@ const impactStats = [
 
 export default function ContributePage() {
   const [submitted, setSubmitted] = useState(false);
+
+  useEffect(() => {
+    updatePageMetadata({
+      title: 'Contribute to NearMe India | Add city coverage and corrections',
+      description: 'Become a volunteer, city coordinator, data contributor, or translator for NearMe India. Help us grow verified public service coverage across India.',
+      keywords: 'contribute, volunteer, city coordinator, data contributor, NearMe India, public service data',
+      url: 'https://nearmeindia.fun/contribute',
+    });
+  }, []);
 
   return (
     <div className="page-wrapper">

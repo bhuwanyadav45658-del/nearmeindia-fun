@@ -1,4 +1,16 @@
+import { useEffect } from 'react';
+import { updatePageMetadata } from '../utils/seo';
+
 export default function TermsPage() {
+  useEffect(() => {
+    updatePageMetadata({
+      title: 'Terms of Service | NearMe India',
+      description: 'Read the terms of service for NearMe India, including accuracy disclaimers, acceptable use, and liability limits for public service information.',
+      keywords: 'terms of service, NearMe India, legal, acceptable use, disclaimer, liability',
+      url: 'https://nearmeindia.fun/terms',
+    });
+  }, []);
+
   return (
     <div className="page-wrapper">
       <section className="page-hero legal-hero">

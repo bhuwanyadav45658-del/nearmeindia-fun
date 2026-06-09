@@ -1,5 +1,6 @@
 import { ChevronDown, ChevronUp, HelpCircle, Search } from 'lucide-react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { updatePageMetadata } from '../utils/seo';
 
 const faqData = [
   {
@@ -117,6 +118,15 @@ function FAQItem({ question, answer }) {
 
 export default function FAQPage() {
   const [searchTerm, setSearchTerm] = useState('');
+
+  useEffect(() => {
+    updatePageMetadata({
+      title: 'FAQ | NearMe India public service directory questions',
+      description: 'Read frequently asked questions about NearMe India, data accuracy, emergency numbers, city coverage and how to contribute data.',
+      keywords: 'FAQ, NearMe India, questions, emergency directory, public service, coverage, data accuracy',
+      url: 'https://nearmeindia.fun/faq',
+    });
+  }, []);
 
   const filteredFaqs = faqData.map((section) => ({
     ...section,

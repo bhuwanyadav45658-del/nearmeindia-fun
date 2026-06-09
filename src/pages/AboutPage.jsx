@@ -1,4 +1,6 @@
+import { useEffect } from 'react';
 import { Shield, Users, Globe, Target, CheckCircle, TrendingUp, Zap, MapPin, BarChart3, Award } from 'lucide-react';
+import { updatePageMetadata } from '../utils/seo';
 
 const stats = [
   { value: '15+', label: 'Service Categories', icon: BarChart3 },
@@ -48,6 +50,15 @@ const timeline = [
 ];
 
 export default function AboutPage() {
+  useEffect(() => {
+    updatePageMetadata({
+      title: 'About NearMe India | Mobile-first public service directory',
+      description: 'Learn how NearMe India connects Indians to emergency numbers, government offices, Aadhaar centers and civic utilities with fast mobile-first search.',
+      keywords: 'NearMe India, about, public services, emergency directory, mobile-first, Aadhaar, government services',
+      url: 'https://nearmeindia.fun/about',
+    });
+  }, []);
+
   return (
     <div className="page-wrapper">
       <section className="page-hero about-hero">

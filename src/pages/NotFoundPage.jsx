@@ -1,6 +1,16 @@
+import { useEffect } from 'react';
 import { Home, Search, AlertTriangle } from 'lucide-react';
+import { updatePageMetadata } from '../utils/seo';
 
 export default function NotFoundPage() {
+  useEffect(() => {
+    updatePageMetadata({
+      title: '404 Page Not Found | NearMe India',
+      description: 'The page you are looking for was not found. Return to NearMe India to search emergency numbers and public services across India.',
+      keywords: '404, page not found, NearMe India, emergency services, public utilities',
+      url: 'https://nearmeindia.fun/404',
+    });
+  }, []);
   return (
     <div className="page-wrapper">
       <section className="page-hero notfound-hero">

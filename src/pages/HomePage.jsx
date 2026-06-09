@@ -7,6 +7,7 @@ import {
   Send, Star, Wind, X
 } from 'lucide-react';
 import { categories, cityOptions, directory, officialSources, popularQueries, routeSeeds } from '../data/directory';
+import { updatePageMetadata } from '../utils/seo';
 
 const iconMap = {
   Accessibility, BadgeCheck, BatteryCharging, BriefcaseBusiness, CarFront,
@@ -26,6 +27,7 @@ function buildSearchText(item) {
 const cityState = {
   Hyderabad: 'Telangana', Secunderabad: 'Telangana', Bengaluru: 'Karnataka',
   Chennai: 'Tamil Nadu', Delhi: 'Delhi', Mumbai: 'Maharashtra', Pune: 'Maharashtra',
+  Ujjain: 'Madhya Pradesh',
 };
 
 function scoreItem(item) {
@@ -180,7 +182,16 @@ export default function HomePage({ initialCategory, initialCity }) {
   useEffect(() => {
     const label = selectedCategoryData?.label ?? 'Public utilities';
     const cityLabel = selectedCity || 'India';
-    document.title = `${label} near ${cityLabel} | NearMe India`;
+    const title = `${label} near ${cityLabel} | NearMe India`;
+    const description = `Find verified ${label.toLowerCase()} and public utility services near ${cityLabel}. NearMe India connects you to emergency numbers, hospitals, Aadhaar centers, police, fire, and civic utilities.`;
+    const keywords = `${label}, ${cityLabel}, near me, emergency numbers, public services, government services, Ujjain, Hyderabad, Bengaluru`;
+    updatePageMetadata({
+      title,
+      description,
+      keywords,
+      url: `https://nearmeindia.fun/${selectedCategory}/${cityLabel.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/gi, '')}`,
+      image: 'https://nearmeindia.fun/visuals/civic-signal-map.svg',
+    });
   }, [selectedCategoryData, selectedCity]);
 
   function selectCategory(slug) { setSelectedCategory(slug); setSelectedItemId(null); }

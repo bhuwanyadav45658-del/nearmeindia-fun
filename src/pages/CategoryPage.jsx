@@ -1,6 +1,7 @@
 import { MapPin, Phone, ChevronRight, Search, ExternalLink } from 'lucide-react';
 import { categories, directory } from '../data/directory';
-import { useState, useMemo } from 'react';
+import { useEffect, useState, useMemo } from 'react';
+import { updatePageMetadata } from '../utils/seo';
 
 const categoryBySlug = Object.fromEntries(categories.map((c) => [c.slug, c]));
 
@@ -16,6 +17,16 @@ export default function CategoryPage({ categorySlug }) {
       `${item.title} ${item.type} ${item.city} ${item.locality} ${item.tags.join(' ')}`.toLowerCase().includes(term)
     );
   }, [categorySlug, searchTerm]);
+
+  useEffect(() => {
+    if (!cat) return;
+    updatePageMetadata({
+      title: `${cat.label} near you | NearMe India`,
+      description: `Find verified ${cat.label.toLowerCase()} and related public utilities across India with call buttons, map links and verified addresses.`,
+      keywords: `${cat.label}, ${cat.label.toLowerCase()} near me, public utilities, emergency services`,
+      url: `https://nearmeindia.fun/category/${categorySlug}`,
+    });
+  }, [cat, categorySlug]);
 
   if (!cat) {
     return (

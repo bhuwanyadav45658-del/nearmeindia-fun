@@ -1,4 +1,6 @@
+import { useEffect } from 'react';
 import { Siren, Phone, Flame, Shield, HeartHandshake, Hospital, AlertTriangle, Zap } from 'lucide-react';
+import { updatePageMetadata } from '../utils/seo';
 
 const emergencyNumbers = [
   { number: '112', label: 'National Emergency', desc: 'Police, Fire, Medical — unified emergency response', icon: Siren, tone: 'red' },
@@ -43,6 +45,15 @@ const emergencyGuides = [
 ];
 
 export default function EmergencyGuidePage() {
+  useEffect(() => {
+    updatePageMetadata({
+      title: 'Emergency Guide | NearMe India emergency numbers and safety steps',
+      description: 'Access India emergency numbers and practical safety steps for accidents, fires, medical emergencies, natural disasters and online crime.',
+      keywords: 'emergency guide, NearMe India, 112, 108, 101, fire safety, medical emergency, disaster response',
+      url: 'https://nearmeindia.fun/emergency-guide',
+    });
+  }, []);
+
   return (
     <div className="page-wrapper">
       <section className="page-hero emergency-hero">

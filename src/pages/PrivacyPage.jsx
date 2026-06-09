@@ -1,4 +1,16 @@
+import { useEffect } from 'react';
+import { updatePageMetadata } from '../utils/seo';
+
 export default function PrivacyPage() {
+  useEffect(() => {
+    updatePageMetadata({
+      title: 'Privacy Policy | NearMe India',
+      description: 'Learn how NearMe India handles user privacy, data corrections, cookies, location, and contact information in this privacy policy.',
+      keywords: 'privacy policy, NearMe India, data privacy, cookies, personal information, user rights',
+      url: 'https://nearmeindia.fun/privacy',
+    });
+  }, []);
+
   return (
     <div className="page-wrapper">
       <section className="page-hero legal-hero">

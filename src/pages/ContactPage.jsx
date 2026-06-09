@@ -1,8 +1,18 @@
 import { Phone, Mail, MapPin, Send, Clock, MessageCircle, Sparkles } from 'lucide-react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { updatePageMetadata } from '../utils/seo';
 
 export default function ContactPage() {
   const [submitted, setSubmitted] = useState(false);
+
+  useEffect(() => {
+    updatePageMetadata({
+      title: 'Contact NearMe India | Public service directory support',
+      description: 'Contact NearMe India for suggestions, corrections, partnerships, and volunteer coordination for public service coverage across India.',
+      keywords: 'contact, NearMe India, support, public service directory, corrections, volunteer, partnership',
+      url: 'https://nearmeindia.fun/contact',
+    });
+  }, []);
 
   function handleSubmit(e) {
     e.preventDefault();

@@ -1,5 +1,6 @@
 import { Calendar, Clock, ArrowRight, Tag, User } from 'lucide-react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { updatePageMetadata } from '../utils/seo';
 import { blogPosts } from '../data/blogData';
 
 function BlogPostCard({ post, onRead }) {
@@ -46,6 +47,15 @@ function BlogPostFull({ post, onBack }) {
 
 export default function BlogPage() {
   const [selectedPost, setSelectedPost] = useState(null);
+
+  useEffect(() => {
+    updatePageMetadata({
+      title: 'Blog | NearMe India updates and public service stories',
+      description: 'Read updates, coverage launches, mobile-first design stories, and public safety guides from NearMe India.',
+      keywords: 'NearMe India blog, public service stories, emergency directory updates, mobile design, civic services',
+      url: 'https://nearmeindia.fun/blog',
+    });
+  }, []);
 
   if (selectedPost) {
     return (
